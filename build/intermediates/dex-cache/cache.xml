@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/ekeyser/IdeaProjects/LocationTrackerV2/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e2719c102dca3a7a5b02ce07f769362da6ddb4ab">
+        <dex dex="/Users/ekeyser/IdeaProjects/LocationTrackerV2/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-25.1.1_93dd1c2762813d75dc1abbe59e2fb26460781201/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/ekeyser/IdeaProjects/LocationTrackerV2/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="02741d05d4b697fba5e279e9881aaa1da0ca7c7f">
+        <dex dex="/Users/ekeyser/IdeaProjects/LocationTrackerV2/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-25.1.1_6f049bc50122e5c65c36bfd921ac50485dca6071/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/ekeyser/IdeaProjects/LocationTrackerV2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="25438f55fc6d906a0e72f30b21487541430ede43">
+        <dex dex="/Users/ekeyser/IdeaProjects/LocationTrackerV2/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-base-10.0.1_7785fdb83eee56f135c978b8d272d864d2652c17/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/ekeyser/IdeaProjects/LocationTrackerV2/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c03bf57f358aa10d253f21989e93bcf6014b3b17">
+        <dex dex="/Users/ekeyser/IdeaProjects/LocationTrackerV2/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-25.1.1_bac2a8608e0ce229c494b1c9b09c4595a398297c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/ekeyser/IdeaProjects/LocationTrackerV2/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7bde4c34162092e0a77e7f12dc85ed77c484cf5c">
+        <dex dex="/Users/ekeyser/IdeaProjects/LocationTrackerV2/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-25.1.1_07b361261f17b9a1b36441f998a08014cbd8735f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/ekeyser/IdeaProjects/LocationTrackerV2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6addaba208e21c6da776d0ca75b6b23a6ccd5499">
+        <dex dex="/Users/ekeyser/IdeaProjects/LocationTrackerV2/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-tasks-10.0.1_af0906e9f4f96e86c4e99e08c297497cab3c6611/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/ekeyser/IdeaProjects/LocationTrackerV2/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/ekeyser/IdeaProjects/LocationTrackerV2/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-25.1.1_c24ca12b950735ea3d1e64ba720af9753f79c597/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/ekeyser/IdeaProjects/LocationTrackerV2/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3e04ac8ca644ea7baddf6fdcf72e15c79e9df94a">
+        <dex dex="/Users/ekeyser/IdeaProjects/LocationTrackerV2/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-25.1.1_21f2b35fb264fd6871a0a57b577d4dfe4aedf408/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/ekeyser/IdeaProjects/LocationTrackerV2/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0fb891e8f0cfba0513043a7bb357513d229ca2cd">
+        <dex dex="/Users/ekeyser/IdeaProjects/LocationTrackerV2/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-25.1.1_cb664c9914b9af7567deefe97c22d19ad62a3ec7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/ekeyser/IdeaProjects/LocationTrackerV2/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="00ae50fab22dff1ce5245126c81aaaa14b77420d">
+        <dex dex="/Users/ekeyser/IdeaProjects/LocationTrackerV2/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_25fb37afb86e1c632391b247e2166a369a94a744/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/ekeyser/IdeaProjects/LocationTrackerV2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="44a694d4095be84c2888764b1f7256b385c030ad">
+        <dex dex="/Users/ekeyser/IdeaProjects/LocationTrackerV2/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-location-10.0.1_3ea6fdf2a594f8ae7ec72897bf069f4a7002c83d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/ekeyser/IdeaProjects/LocationTrackerV2/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0d191c1a09e4892d059e5ce749e4ad4e08129e35">
+        <dex dex="/Users/ekeyser/IdeaProjects/LocationTrackerV2/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-25.1.1_ccbdc305d38703d840b1b27503d93fa1285c64a5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/ekeyser/IdeaProjects/LocationTrackerV2/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="13754b8cb8b219f69abc4c2533c704d0a35afdb1">
+        <dex dex="/Users/ekeyser/IdeaProjects/LocationTrackerV2/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_19e0ab4c9c4de5950ee23164f3ede1b6508c4d8c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/ekeyser/IdeaProjects/LocationTrackerV2/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="756f6297eef79784f5e356dcd4f39865028b2bd0">
+        <dex dex="/Users/ekeyser/IdeaProjects/LocationTrackerV2/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-basement-10.0.1_898394c11f45f9f7e9b21adc1e91cc52c8fb259d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/ekeyser/Documents/android-sdk-macosx/extras/android/m2repository/com/android/support/support-annotations/25.1.1/support-annotations-25.1.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b59b6ee8d6ecc03e672d253800430343493a6ed8">
+        <dex dex="/Users/ekeyser/IdeaProjects/LocationTrackerV2/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.1.1_9d4a8c344dc5fe5d1a0ad4a5d220ff4a8ab36688/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/ekeyser/IdeaProjects/LocationTrackerV2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ecb496cc08dd52551fc5ec6db3bc0632e95a89bb">
+        <dex dex="/Users/ekeyser/IdeaProjects/LocationTrackerV2/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-25.1.1_e027ee5929e8723ee78f0d98c01395ca899cf30d/classes.dex" />
+    </item>
+
+</items>
