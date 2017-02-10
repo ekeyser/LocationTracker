@@ -21,20 +21,15 @@ import java.net.MalformedURLException;
 import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class GPSService extends Service implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     private LocationRequest mLocationRequest;
     private GoogleApiClient mGoogleApiClient;
     private static final String LOGSERVICE = "------->";
-    private Timer timer;
-    private HandlerThread mLocThread;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        initThread();
         buildGoogleApiClient();
 
     }
@@ -44,11 +39,6 @@ public class GPSService extends Service implements GoogleApiClient.ConnectionCal
         if (!mGoogleApiClient.isConnected())
             mGoogleApiClient.connect();
         return START_STICKY;
-    }
-
-    private void initThread() {
-        mLocThread = new HandlerThread("locationThread");
-        mLocThread.start();
     }
 
     public class LocalBinder extends Binder {
@@ -61,13 +51,7 @@ public class GPSService extends Service implements GoogleApiClient.ConnectionCal
 
     @Override
     public void onConnected(Bundle bundle) {
-        timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                startLocationUpdate();
-            }
-        }, 0, 60000);
+        startLocationUpdate();
     }
 
     @Override
@@ -89,12 +73,13 @@ public class GPSService extends Service implements GoogleApiClient.ConnectionCal
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
         Log.w(LOGSERVICE, "onConnectionFailed ");
-
     }
 
     private void startLocationUpdate() {
         mLocationRequest = new LocationRequest();
-        mLocationRequest.create().setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        mLocationRequest.setInterval(60000);
+        mLocationRequest.setFastestInterval(60000);
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -114,7 +99,7 @@ public class GPSService extends Service implements GoogleApiClient.ConnectionCal
                 PostTask pt = new PostTask();
                 pt.doInBackground(String.valueOf(location.getTime()), String.valueOf(location.getLatitude()), String.valueOf(location.getLongitude()));
             }
-        }, mLocThread.getLooper());
+        });
     }
 
     private synchronized void buildGoogleApiClient() {
