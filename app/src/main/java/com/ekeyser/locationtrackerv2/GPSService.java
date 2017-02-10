@@ -67,7 +67,7 @@ public class GPSService extends Service implements GoogleApiClient.ConnectionCal
             public void run() {
                 startLocationUpdate();
             }
-        }, 0, 30000);
+        }, 0, 60000);
     }
 
     @Override
