@@ -28,16 +28,13 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-
-        Log.v(TAG, "main onCreate");
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            Log.e(TAG, "NOPE");
+            Log.w(TAG, "NOPE");
             ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, MY_PERMISSION_ACCESS_FINE_LOCATION);
         }
 
         Intent intent = new Intent(this, GPSService.class);
         startService(intent);
-        Log.v(TAG, "mk11");
     }
 
     protected void onStart() {
