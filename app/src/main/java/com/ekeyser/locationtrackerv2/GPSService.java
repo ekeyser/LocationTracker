@@ -5,13 +5,15 @@ import android.app.Service;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.os.*;
+import android.os.AsyncTask;
+import android.os.Binder;
+import android.os.Bundle;
+import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 
@@ -22,7 +24,7 @@ import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.net.URLEncoder;
 
-public class GPSService extends Service implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+public class GPSService extends Service implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener {
     private LocationRequest mLocationRequest;
     private GoogleApiClient mGoogleApiClient;
     private static final String LOGSERVICE = "------->";
@@ -60,6 +62,14 @@ public class GPSService extends Service implements GoogleApiClient.ConnectionCal
     }
 
     @Override
+    public void onLocationChanged(Location location) {
+        Log.i(LOGSERVICE, "lat " + location.getLatitude());
+        Log.i(LOGSERVICE, "lng " + location.getLongitude());
+        PostTask pt = new PostTask();
+        pt.doInBackground(String.valueOf(location.getTime()), String.valueOf(location.getLatitude()), String.valueOf(location.getLongitude()));
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
     }
@@ -91,15 +101,11 @@ public class GPSService extends Service implements GoogleApiClient.ConnectionCal
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
+        LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
+    }
 
-        LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, new LocationListener() {
-            @Override
-            public void onLocationChanged(Location location) {
-//                Log.i(LOGSERVICE, "Got a fix: " + location);
-                PostTask pt = new PostTask();
-                pt.doInBackground(String.valueOf(location.getTime()), String.valueOf(location.getLatitude()), String.valueOf(location.getLongitude()));
-            }
-        });
+    private void stopLocationUpdate() {
+        LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
     }
 
     private synchronized void buildGoogleApiClient() {
