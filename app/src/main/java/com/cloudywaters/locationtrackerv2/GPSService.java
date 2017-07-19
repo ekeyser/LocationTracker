@@ -11,24 +11,23 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.support.v4.app.ActivityCompat;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.SocketTimeoutException;
 import java.net.URL;
-import java.net.URLEncoder;
 
-import android.os.*;
-import android.support.v4.app.ActivityCompat;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class GPSService extends Service implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
-    private LocationRequest mLocationRequest;
     private GoogleApiClient mGoogleApiClient;
     private static final String LOGSERVICE = "------->";
 
@@ -46,13 +45,11 @@ public class GPSService extends Service implements GoogleApiClient.ConnectionCal
         return START_STICKY;
     }
 
-    public class LocalBinder extends Binder {
+    class LocalBinder extends Binder {
         GPSService getService() {
             return GPSService.this;
         }
     }
-
-    private final IBinder mBinder = new LocalBinder();
 
     @Override
     public void onConnected(Bundle bundle) {
@@ -81,6 +78,7 @@ public class GPSService extends Service implements GoogleApiClient.ConnectionCal
     }
 
     private void startLocationUpdate() {
+        LocationRequest mLocationRequest;
         mLocationRequest = new LocationRequest();
         mLocationRequest.setInterval(60000);
         mLocationRequest.setFastestInterval(60000);
@@ -100,7 +98,6 @@ public class GPSService extends Service implements GoogleApiClient.ConnectionCal
         LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-//                Log.i(LOGSERVICE, "Got a fix: " + location);
                 PostTask pt = new PostTask();
                 pt.doInBackground(String.valueOf(location.getTime()), String.valueOf(location.getLatitude()), String.valueOf(location.getLongitude()));
             }
@@ -118,6 +115,15 @@ public class GPSService extends Service implements GoogleApiClient.ConnectionCal
     private class PostTask extends AsyncTask<String, String, String> {
         @Override
         protected String doInBackground(String... data) {
+            JSONObject jsonParam = new JSONObject();
+            try {
+                jsonParam.put("ts", data[0]);
+                jsonParam.put("lat", data[1]);
+                jsonParam.put("lon", data[2]);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
             HttpsURLConnection urlConnection = null;
             try {
 //                URL url = new URL("https://location-api.400lbs.com/");
@@ -125,38 +131,28 @@ public class GPSService extends Service implements GoogleApiClient.ConnectionCal
                 urlConnection = (HttpsURLConnection) url.openConnection();
                 urlConnection.setDoOutput(true);
                 urlConnection.setChunkedStreamingMode(0);
+                urlConnection.setRequestProperty("Content-Type", "application/json");
 
-                OutputStream out = new BufferedOutputStream(urlConnection.getOutputStream());
-                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out, "UTF-8"));
-                StringBuilder streamBuilder = new StringBuilder();
-                streamBuilder.append(URLEncoder.encode("ts", "UTF-8"));
-                streamBuilder.append("=");
-                streamBuilder.append(URLEncoder.encode(data[0], "UTF-8"));
-                streamBuilder.append("&");
-                streamBuilder.append(URLEncoder.encode("lat", "UTF-8"));
-                streamBuilder.append("=");
-                streamBuilder.append(URLEncoder.encode(data[1], "UTF-8"));
-                streamBuilder.append("&");
-                streamBuilder.append(URLEncoder.encode("lon", "UTF-8"));
-                streamBuilder.append("=");
-                streamBuilder.append(URLEncoder.encode(data[2], "UTF-8"));
-                writer.write(streamBuilder.toString());
-                writer.flush();
-                writer.close();
-                out.close();
+                DataOutputStream wr = new DataOutputStream(urlConnection.getOutputStream());
+                wr.writeBytes(jsonParam.toString());
+                wr.flush();
+                wr.close();
 
                 InputStream in = new BufferedInputStream(urlConnection.getInputStream());
                 byte[] contents = new byte[1024];
                 int bytesRead;
-                String strFileContents = "";
+                StringBuilder strFileContents = new StringBuilder();
                 while ((bytesRead = in.read(contents)) != -1) {
-                    strFileContents += new String(contents, 0, bytesRead);
+                    strFileContents.append(new String(contents, 0, bytesRead));
                 }
 
                 Log.v(LOGSERVICE, "response was " + strFileContents);
             } catch (MalformedURLException error) {
+                Log.e(LOGSERVICE, "malformed url exception");
             } catch (SocketTimeoutException error) {
+                Log.e(LOGSERVICE, "socket timeout");
             } catch (IOException error) {
+                Log.e(LOGSERVICE, "IO Exception");
             } finally {
                 if (urlConnection != null) {
                     urlConnection.disconnect();

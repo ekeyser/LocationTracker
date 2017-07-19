@@ -14,8 +14,8 @@ import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
 
-    boolean mIsBound;
-    private GPSService mBoundService;
+    private boolean mIsBound;
+//    private GPSService mBoundService;
     private static final String TAG = "MainActivity";
     private static final int MY_PERMISSION_ACCESS_FINE_LOCATION = 11;
 
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStop();
     }
 
-    void doUnbindService() {
+    private void doUnbindService() {
         if (mIsBound) {
             unbindService(mConnection);
             mIsBound = false;
@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private ServiceConnection mConnection = new ServiceConnection() {
+        GPSService mBoundService;
         public void onServiceConnected(ComponentName className, IBinder service) {
             mBoundService = ((GPSService.LocalBinder) service).getService();
         }
